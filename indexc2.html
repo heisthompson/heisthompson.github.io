@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Thompson Onah, Electronic Engineering</title>
+<meta name="description" content="Thompson Onah, Electronic Engineering graduate from the University of Nigeria, Nsukka. Projects in embedded systems, sensing and power electronics.">
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F3F6F8; --ink:#13222E; --muted:#4A5B68; --rule:#CBD6DD;
+  --accent:#1B6B8A; --signal:#D98A1F; --signal-fill:rgba(217,138,31,.34);
+  --font-head:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
+  --font-body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#0F1A22; --ink:#E6EEF3; --muted:#9DB0BD; --rule:#26394A;
+    --accent:#6FC3E0; --signal:#F0A23A; --signal-fill:rgba(240,162,58,.30);
+    color-scheme:dark;
+  }
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:1.125rem;line-height:1.65}
+a{color:var(--accent);text-underline-offset:.2em}
+a:focus-visible,.btn:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:2px}
+.wrap{max-width:960px;margin:0 auto;padding:0 1.25rem}
+
+header.hero{padding:3.5rem 0 1.5rem}
+.hero-grid{display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center}
+h1{font-family:var(--font-head);font-weight:800;font-size:clamp(2.4rem,6vw,3.9rem);line-height:1.04;letter-spacing:-.02em;margin:0 0 .9rem}
+.tagline{font-family:var(--font-head);font-weight:500;font-size:clamp(1.25rem,2.6vw,1.6rem);line-height:1.3;margin:0 0 .8rem;max-width:30ch}
+.sub{margin:0 0 1.4rem;color:var(--muted);max-width:52ch}
+.actions{display:flex;flex-wrap:wrap;gap:.75rem}
+.btn{font-family:var(--font-head);font-weight:600;font-size:1rem;text-decoration:none;padding:.65rem 1.1rem;border:2px solid var(--accent);border-radius:4px;color:var(--accent);background:transparent}
+.btn.primary{background:var(--accent);color:var(--bg)}
+.btn:hover{text-decoration:underline}
+
+.photo{width:168px;height:168px;border-radius:50%;border:2px solid var(--rule);overflow:hidden;position:relative;background:var(--rule);display:grid;place-items:center;flex:none}
+.photo .initials{font-family:var(--font-head);font-weight:800;font-size:3.2rem;color:var(--muted)}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
+figure.signal{margin:1.5rem 0 0}
+figure.signal svg{display:block;width:100%;height:auto}
+figure.signal figcaption{color:var(--muted);font-size:.98rem;max-width:68ch;margin-top:.4rem}
+.axis{stroke:var(--rule);stroke-width:1.5}
+.zc{stroke:var(--rule);stroke-width:1;stroke-dasharray:4 5}
+.wave{fill:none;stroke:var(--accent);stroke-width:3;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:0}
+.conduct{fill:var(--signal-fill)}
+.fire{stroke:var(--signal);stroke-width:2.5}
+.lbl{fill:var(--muted);font-family:var(--font-head);font-size:15px;font-weight:500}
+@media (prefers-reduced-motion:no-preference){
+  .wave{animation:draw 2.4s cubic-bezier(.45,.05,.3,1) .2s both}
+  .conduct{animation:rise .8s ease 2s both}
+  .fire{animation:rise .5s ease 2s both}
+}
+@keyframes draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes rise{from{opacity:0}to{opacity:1}}
+
+main section{padding:2.2rem 0;border-top:1px solid var(--rule)}
+.sec{display:grid;grid-template-columns:190px 1fr;gap:1rem 2.2rem}
+h2{font-family:var(--font-head);font-weight:700;font-size:1.3rem;line-height:1.25;margin:0}
+h3{font-family:var(--font-head);font-weight:700;font-size:1.15rem;line-height:1.3;margin:0 0 .25rem}
+.body p{margin:0 0 1rem;max-width:68ch}
+.body p:last-child{margin-bottom:0}
+.entry{margin:0 0 1.8rem}
+.entry:last-child{margin-bottom:0}
+.when{color:var(--muted);margin:0 0 .5rem}
+.facts{margin:.2rem 0 1rem;padding-left:1.2rem;max-width:68ch}
+.facts li{margin:.3rem 0}
+.skills p{margin:0 0 .6rem}
+.skills strong{font-family:var(--font-head);font-weight:600}
+
+footer{padding:2rem 0 3rem;border-top:1px solid var(--rule);color:var(--muted);font-size:.98rem}
+
+@media (max-width:760px){
+  .lbl{display:none}
+  .hero-grid{grid-template-columns:1fr}
+  .photo{order:-1;width:132px;height:132px}
+  .photo .initials{font-size:2.6rem}
+  .sec{grid-template-columns:1fr}
+  header.hero{padding-top:2.2rem}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <h1>Thompson Onah</h1>
+        <p class="tagline">I build electronic systems and fix them when they fail.</p>
+        <p class="sub">Electronic Engineering graduate from the University of Nigeria, Nsukka, applying to graduate programs for 2027.</p>
+        <div class="actions">
+          <a class="btn primary" href="mailto:thompson.onah.247023@unn.edu.ng">Email me</a>
+          <!-- EDIT: upload your CV as Thompson_Onah_CV.pdf in the same folder as this file. Fix the degree name on it first: it must say Electronic Engineering. -->
+          <a class="btn" href="Thompson_Onah_CV.pdf">Download CV</a>
+        </div>
+      </div>
+      <!-- EDIT: save your photo as photo.jpg in the same folder as this file. If it is missing, your initials show instead. -->
+      <div class="photo">
+        <span class="initials" aria-hidden="true">TO</span>
+        <img src="photo.jpg" alt="Photo of Thompson Onah" onerror="this.remove()">
+      </div>
+    </div>
+
+    <figure class="signal">
+      <svg viewBox="0 0 960 150" role="img" aria-labelledby="fig-title fig-desc" preserveAspectRatio="xMidYMid meet">
+  <title id="fig-title">Mains waveform with TRIAC phase control</title>
+  <desc id="fig-desc">Two cycles of an AC sine wave. Dashed lines mark each zero crossing. The shaded part of each half cycle is where the TRIAC conducts after it is triggered.</desc>
+  <line x1="0" y1="75" x2="960" y2="75" class="axis"/>
+  <line x1="0" y1="10" x2="0" y2="140" class="zc"/><line x1="240" y1="10" x2="240" y2="140" class="zc"/><line x1="480" y1="10" x2="480" y2="140" class="zc"/><line x1="720" y1="10" x2="720" y2="140" class="zc"/><line x1="960" y1="10" x2="960" y2="140" class="zc"/>
+  <polygon points="80,75 80,33.4 84,32.2 88,31.1 92,30.2 96,29.3 100,28.6 104,28.0 108,27.6 112,27.3 116,27.1 120,27.0 124,27.1 128,27.3 132,27.6 136,28.0 140,28.6 144,29.3 148,30.2 152,31.1 156,32.2 160,33.4 164,34.7 168,36.2 172,37.7 176,39.3 180,41.1 184,42.9 188,44.8 192,46.8 196,48.9 200,51.0 204,53.2 208,55.5 212,57.8 216,60.2 220,62.6 224,65.0 228,67.5 232,70.0 236,72.5 240,75.0 240,75" class="conduct"/><polygon points="320,75 320,116.6 324,117.8 328,118.9 332,119.8 336,120.7 340,121.4 344,122.0 348,122.4 352,122.7 356,122.9 360,123.0 364,122.9 368,122.7 372,122.4 376,122.0 380,121.4 384,120.7 388,119.8 392,118.9 396,117.8 400,116.6 404,115.3 408,113.8 412,112.3 416,110.7 420,108.9 424,107.1 428,105.2 432,103.2 436,101.1 440,99.0 444,96.8 448,94.5 452,92.2 456,89.8 460,87.4 464,85.0 468,82.5 472,80.0 476,77.5 480,75.0 480,75" class="conduct"/><polygon points="560,75 560,33.4 564,32.2 568,31.1 572,30.2 576,29.3 580,28.6 584,28.0 588,27.6 592,27.3 596,27.1 600,27.0 604,27.1 608,27.3 612,27.6 616,28.0 620,28.6 624,29.3 628,30.2 632,31.1 636,32.2 640,33.4 644,34.7 648,36.2 652,37.7 656,39.3 660,41.1 664,42.9 668,44.8 672,46.8 676,48.9 680,51.0 684,53.2 688,55.5 692,57.8 696,60.2 700,62.6 704,65.0 708,67.5 712,70.0 716,72.5 720,75.0 720,75" class="conduct"/><polygon points="800,75 800,116.6 804,117.8 808,118.9 812,119.8 816,120.7 820,121.4 824,122.0 828,122.4 832,122.7 836,122.9 840,123.0 844,122.9 848,122.7 852,122.4 856,122.0 860,121.4 864,120.7 868,119.8 872,118.9 876,117.8 880,116.6 884,115.3 888,113.8 892,112.3 896,110.7 900,108.9 904,107.1 908,105.2 912,103.2 916,101.1 920,99.0 924,96.8 928,94.5 932,92.2 936,89.8 940,87.4 944,85.0 948,82.5 952,80.0 956,77.5 960,75.0 960,75" class="conduct"/>
+  <polyline points="0,75.0 4,72.5 8,70.0 12,67.5 16,65.0 20,62.6 24,60.2 28,57.8 32,55.5 36,53.2 40,51.0 44,48.9 48,46.8 52,44.8 56,42.9 60,41.1 64,39.3 68,37.7 72,36.2 76,34.7 80,33.4 84,32.2 88,31.1 92,30.2 96,29.3 100,28.6 104,28.0 108,27.6 112,27.3 116,27.1 120,27.0 124,27.1 128,27.3 132,27.6 136,28.0 140,28.6 144,29.3 148,30.2 152,31.1 156,32.2 160,33.4 164,34.7 168,36.2 172,37.7 176,39.3 180,41.1 184,42.9 188,44.8 192,46.8 196,48.9 200,51.0 204,53.2 208,55.5 212,57.8 216,60.2 220,62.6 224,65.0 228,67.5 232,70.0 236,72.5 240,75.0 244,77.5 248,80.0 252,82.5 256,85.0 260,87.4 264,89.8 268,92.2 272,94.5 276,96.8 280,99.0 284,101.1 288,103.2 292,105.2 296,107.1 300,108.9 304,110.7 308,112.3 312,113.8 316,115.3 320,116.6 324,117.8 328,118.9 332,119.8 336,120.7 340,121.4 344,122.0 348,122.4 352,122.7 356,122.9 360,123.0 364,122.9 368,122.7 372,122.4 376,122.0 380,121.4 384,120.7 388,119.8 392,118.9 396,117.8 400,116.6 404,115.3 408,113.8 412,112.3 416,110.7 420,108.9 424,107.1 428,105.2 432,103.2 436,101.1 440,99.0 444,96.8 448,94.5 452,92.2 456,89.8 460,87.4 464,85.0 468,82.5 472,80.0 476,77.5 480,75.0 484,72.5 488,70.0 492,67.5 496,65.0 500,62.6 504,60.2 508,57.8 512,55.5 516,53.2 520,51.0 524,48.9 528,46.8 532,44.8 536,42.9 540,41.1 544,39.3 548,37.7 552,36.2 556,34.7 560,33.4 564,32.2 568,31.1 572,30.2 576,29.3 580,28.6 584,28.0 588,27.6 592,27.3 596,27.1 600,27.0 604,27.1 608,27.3 612,27.6 616,28.0 620,28.6 624,29.3 628,30.2 632,31.1 636,32.2 640,33.4 644,34.7 648,36.2 652,37.7 656,39.3 660,41.1 664,42.9 668,44.8 672,46.8 676,48.9 680,51.0 684,53.2 688,55.5 692,57.8 696,60.2 700,62.6 704,65.0 708,67.5 712,70.0 716,72.5 720,75.0 724,77.5 728,80.0 732,82.5 736,85.0 740,87.4 744,89.8 748,92.2 752,94.5 756,96.8 760,99.0 764,101.1 768,103.2 772,105.2 776,107.1 780,108.9 784,110.7 788,112.3 792,113.8 796,115.3 800,116.6 804,117.8 808,118.9 812,119.8 816,120.7 820,121.4 824,122.0 828,122.4 832,122.7 836,122.9 840,123.0 844,122.9 848,122.7 852,122.4 856,122.0 860,121.4 864,120.7 868,119.8 872,118.9 876,117.8 880,116.6 884,115.3 888,113.8 892,112.3 896,110.7 900,108.9 904,107.1 908,105.2 912,103.2 916,101.1 920,99.0 924,96.8 928,94.5 932,92.2 936,89.8 940,87.4 944,85.0 948,82.5 952,80.0 956,77.5 960,75.0" class="wave" pathLength="1"/>
+  <line x1="320" y1="41" x2="320" y2="109" class="fire"/>
+  <text x="246" y="18" class="lbl">zero crossing</text>
+  <text x="328" y="60" class="lbl">TRIAC fires</text>
+</svg>
+      <figcaption>Phase control, the method behind my fan controller. An opto-coupler marks each mains zero crossing, and the TRIAC is triggered after a delay. A longer delay means less of each half cycle reaches the fan.</figcaption>
+    </figure>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="sec">
+    <h2>About</h2>
+    <div class="body">
+      <p>I finished my B.Eng. in Electronic Engineering in 2025 with a CGPA of 3.67/5.00, and 4.46/5.00 over my last two years.</p>
+      <p>My final-year project was an AC fan controller on an ATmega8. It reads a temperature sensor and sets the fan speed by triggering a TRIAC. During industrial training at Fouani Nigeria Limited I installed solar systems and repaired inverters, including one that kept overheating because of a defective temperature sensor.</p>
+      <p>I am interested in sensing, signal conditioning, embedded systems and power electronics.</p>
+    </div>
+  </section>
+
+  <section class="sec">
+    <h2>Projects</h2>
+    <div class="body">
+      <div class="entry">
+        <h3>Automatic AC Fan Regulation System Using Temperature Sensing</h3>
+        <p class="when">Final-year thesis, March to November 2025. Grade: A.</p>
+        <p>A closed-loop controller that regulates AC fan speed from temperature. An ATmega8 reads a DHT11 sensor and drives the fan through a TRIAC module. An opto-coupler triggers the TRIAC and detects each mains zero crossing, and I also worked with a photodiode in the circuit.</p>
+        <ul class="facts">
+          <li>Response time of about 50 to 60 ms in bench tests.</li>
+          <li>98.79% accuracy in matching fan speed to the temperature thresholds.</li>
+          <li>Presented at IECEC 2026, University of Nigeria, Nsukka, with Ogara David Nnamdi and Onah Valentine Onyedikachi. Supervisor: Engr. Dr. C. M. Ogbuka.</li>
+        </ul>
+      </div>
+      <div class="entry">
+        <h3>Affordify</h3>
+        <p>A mobile app built in Dart and Flutter and published on <a href="https://github.com/heisthompson">my GitHub</a>.</p>
+        <!-- OPTIONAL: if you want a direct link to the Affordify repository, replace the GitHub link above with its address. -->
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <h2>Industrial training</h2>
+    <div class="body">
+      <div class="entry">
+        <h3>Fouani Nigeria Limited, Solar Service Centre</h3>
+        <p class="when">November 2024 to January 2025</p>
+        <ul class="facts">
+          <li>Diagnosed and repaired faults in inverters and solar power systems.</li>
+          <li>Traced an inverter overheating fault to a defective temperature sensor.</li>
+          <li>Did preventive maintenance and gave customers technical support.</li>
+        </ul>
+      </div>
+      <div class="entry">
+        <h3>Fouani Nigeria Limited, Solar Installation Department</h3>
+        <p class="when">August to October 2024</p>
+        <ul class="facts">
+          <li>Installed and commissioned residential and commercial solar PV systems, including hybrid inverters and lithium battery storage.</li>
+          <li>Did the DC and AC wiring, testing and commissioning.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <h2>Education</h2>
+    <div class="body">
+      <h3>University of Nigeria, Nsukka</h3>
+      <p class="when">August 2021 to September 2025</p>
+      <p>B.Eng. in Electronic Engineering, Second Class Honours (Upper Division). CGPA 3.67/5.00 overall and 4.46/5.00 over the final two years.</p>
+      <p>Coursework includes Digital Signal Processing, Control Theory, Process Control, Digital System Design, Computer System Design, Microprocessing Systems, Electronic Measurements and Reliability Engineering.</p>
+    </div>
+  </section>
+
+  <section class="sec">
+    <h2>Skills</h2>
+    <div class="body skills">
+      <p><strong>Programming.</strong> C++, Python, MATLAB, VHDL, Dart.</p>
+      <p><strong>Hardware.</strong> ATmega8 and Arduino, sensor interfacing, TRIAC and opto-coupler circuits, Cadence schematic capture, SPICE simulation.</p>
+      <p><strong>Tools.</strong> Git, GitHub, VS Code.</p>
+    </div>
+  </section>
+
+  <section class="sec">
+    <h2>Memberships</h2>
+    <div class="body">
+      <p>Registered Pupil Engineer, Council for the Regulation of Engineering in Nigeria (COREN), since July 2026.</p>
+      <p>Graduate Member, Nigerian Society of Engineers (NSE), since July 2026.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="contact">
+    <h2>Contact</h2>
+    <div class="body">
+      <p>The best way to reach me is by email: <a href="mailto:thompson.onah.247023@unn.edu.ng">thompson.onah.247023@unn.edu.ng</a></p>
+      <p>My code is on GitHub: <a href="https://github.com/heisthompson">github.com/heisthompson</a></p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">Updated October 2026.</div>
+</footer>
+
+</body>
+</html>
